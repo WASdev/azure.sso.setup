@@ -1,9 +1,9 @@
-# Setting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients
+# Modifying an Azure OIDC OP for WebSphere Application Server and Liberty clients
 ---
 
 # Description
 
-This document is indended as a fast path to get you started with using Azure as your OpenID Connect provider (OP) for the WebSphere Application Server traditional and Liberty OIDC relying parties (RP).  
+This example shows how to modify an existing Azure app registration to add a WebSphere traditional or Liberty OIDC relying parties (RP).
 
 # References
 
@@ -52,14 +52,6 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
       - Websphere traditional: https://test.co:9443/oidcclient/RP1
 
    
-
-
-## Create an Azure AD user account
-
- - If you are working with a free Azure account and have not yet added any users, follow the steps to [Create a user account](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-assign-users#create-a-user-account) on [Quickstart: Create and assign a user account](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-assign-users).
-     - ![](files/AzCaution.gif?preventCache=1551478986083) <b>Caution</b>: You won't be able to add a group as shown in the **Assign a user account to an enterprise application** section, so don't try it. 
-
-
 # Procedure
 
 ## Login to the Azure portal
@@ -73,7 +65,7 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
    - After you select your tenant, click&nbsp;&nbsp;![](files/AzButton.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu on the left to return to the **Azure services** menu.
 
 
-## Register your application
+## Navigate to your App Registration
 
    ![](files/AzSearch.png?preventCache=1551478986083)
 
@@ -83,98 +75,56 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 
 1. <font size="+1">Under <b>Manage</b> in the menu on the left, click <b>App Regsistrations</b></font>
 
-	![](files/AzAppRegistrations.png?preventCache=1551478986083)
+	![](files/AzApps.png?preventCache=1551478986083)
 
-1. <font size="+1">In the action bar, click <b>New registration</b></font>
+1. Click the application that you want to use.
 
-	![](files/AzNewRegistration.png?preventCache=1551478986083)
+## Get the client ID and discovery URL values
+-. Note values to use when when configuring WebSphere or Liberty later in this task.
+   - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
+     - where **{tenant}** is the name of your tenant.
+   - The values for for the **client ID** and **tenant ID** 
+     - All your client secrets use the same client ID.
+   ![](files/AzUpdateApp.png?preventCache=1551478986083)
 
-1. <font size="+1">On the <b>Register an application</b> panel, provide the details for the application you are registering:</font>
-	![](files/AzRegister.png?preventCache=1551478986083)
-   - **Name**: The name of your application
-   - **Supported account type**: Multitenant
-	 - If you need your application to use Oauth V2.0 endpoints, select Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts
-   - The **Redirect URI** field is optional on this page; instructions are provided later in this document for setting the Redirect URI
-     - If you enter it now, be sure to select Web as the platform
-1. <font size="+1">Click <b>Register</b></font>
-   - Note values to use when when configuring WebSphere or Liberty later in this task.
-     - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
-       - where **{tenant}** is the name of your tenant.
-     - The generated for the **client ID** and **tenant ID** 
-       - All your client secrets use the same client ID.
-   ![](files/AzNewApp.png?preventCache=1551478986083)
+## Create a client secret
 1. <font size="+1">Create a client secret</font>
-   1. <font size="+1">Next to <b>Client credentials</b>, click <b>Add a certificate or secret</b></font>
-   1. <font size="+1">Click <b>New client secret</b></font>
+1. <font size="+1">Click the link next to <b>Client credentials</b></font>
+1. <font size="+1">Click <b>New client secret</b></font>
 
-	  ![](files/AzClientSecret.png?preventCache=1551478986083)
+       ![](files/AzExistingSecret.png?preventCache=1551478986083)
 
-   1. <font size="+1">Enter a description for your new secret and the expiration, then click <b>Add</b></font>
+1. <font size="+1">Enter a description for your new secret and the expiration, then click <b>Add</b></font>
 
-	  ![](files/AzSecret.png?preventCache=1551478986083)
+       ![](files/AzNewSecret.png?preventCache=1551478986083)
 
-   1. <font size="+1">![](files/AzCaution.gif?preventCache=1551478986083) <b>Caution</b>: Be sure to note the value that is generated for the <font size="+2"><b>client secret</b></font> to use when configuring WebSphere or Liberty later in this task.  You cannot view this value again later.</font>
+1. <font size="+1">![](files/AzCaution.gif?preventCache=1551478986083) <b>Caution</b>: Be sure to note the value that is generated for the <font size="+2"><b>client secret</b></font> to use when configuring WebSphere or Liberty later in this task.  You cannot view this value again later.</font>
 
-      ![](files/AzTestSecret.png?preventCache=1551478986083)
-
-## Add permissions
-
-1. <font size="+1">Under <b>Manage</b>, click <b>API Permissions</b>, then <b>Add a permission</b></font>
-
-   ![](files/AzPermissions.png?preventCache=1551478986083)
-
-
-1. <font size="+1">Click <b>Microsoft Graph</b></font> 
-
-   ![](files/AzRequestPermission.png?preventCache=1551478986083)
-
-1. <font size="+1">Click <b>Delegated permissions</b></font>
-
-   ![](files/AzGraphPermissions.png?preventCache=1551478986083)
-
-1. <font size="+1">Check the <b>Openid permissions</b>, then click <b>Add permissions</b>:</font>
-   - openid
-   - profile
-   - (Optional) Check any other permissions that your application might require.
-
-   ![](files/AzDelegatedPermissions.png?preventCache=1551478986083)
-
-
-1. <font size="+1">Click <b>Grant admin consent</b>, then click <b>Yes</b></font> 
-
-   ![](files/AzGrantAdminConsent.png?preventCache=1551478986083)
-
-## Expose an API
-
-1. <font size="+1">Under <b>Manage</b>, click <b>Expose an API</b> &gt; <b>Add a scope</b> &gt; <b>Save and Continue</b></font>
-
-   ![](files/AzScope1.png?preventCache=1551478986083)
-
-1. <font size="+1">Fill in the required fields, then click <b>Add scope</b>:</font>
-   ![](files/AzScope2.png?preventCache=1551478986083)
-
-   - **Scope name** = default
-   - **Who can consent** = Admins and users
-   - Admin consent display name
-   - Admin consent description
-   - **State** = Enabled
+   ![](files/AzWasSecret.png?preventCache=1551478986083)
 
 
 ## Add a redirect URI:
-1. <font size="+1">Under <b>Manage</b>, click <b>Authentication</b> &gt; <b>Add a platform</b> &gt; <b>Web</b></font>
+1. <font size="+1">Under <b>Manage</b>, click <b>Authentication</b>
 
-   ![](files/AzAddPlatform.png?preventCache=1551478986083)
+  - If the **Web** platform already exists, click **Add URI**
+   ![](files/AzAddUri.png?preventCache=1551478986083)
+   - Enter your <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
+     - If you have your redirect URI, enter it now.                                   a
+     - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
 
+  - Otherwise, 
+   1. Click <b>Add a platform</b></font>
+      ![](files/AzAddPlatform.png?preventCache=1551478986083)
+   1. Click Web
+   1. <font size="+1">Fill in the information on the <b>Configure Web</b> panel:</font>
+      ![](files/AzAddRedirect.png?preventCache=1551478986083)
+      1. <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
+         - If you have your redirect URI, enter it now.                                   a
+   	  - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
+      1. <b>Implicit grant and hybrid flows</b>:
+         - Check both **Access tokens** and **ID tokens**
 
-1. <font size="+1">Fill in the information on the <b>Configure Web</b> panel:</font>
-   ![](files/AzAddRedirect.png?preventCache=1551478986083)
-   1. <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
-      - If you have your redirect URI, enter it now.                                   a
-	  - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
-   1. <b>Implicit grant and hybrid flows</b>:
-      - Check both **Access tokens** and **ID tokens**
-
-1. <font size="+1">Click <b>Configure</b></font>
+   1. <font size="+1">Click <b>Configure</b></font>
 
 
 # What to do next
