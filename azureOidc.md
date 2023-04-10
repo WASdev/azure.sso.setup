@@ -25,21 +25,33 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 ## Configure your OIDC RP: 
 
   - For WebSphere Application Server Traditional, see [Configuring an OpenID Connect Relying Party](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/tsec_oidconfigure.html) and [OpenID Connect Relying Party custom properties](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/csec_oidprop.html).
+    - On the _Import the OpenID connect provider's SSL signer certificate to the WebSphere Application Server truststore_ step, use the following data:
+      - host: **login.microsoftonline.com**
+      - port: **443**
   - For Liberty, see [Configuring an OpenID Connect Client in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_config_oidc_rp.html)
+    - On the step to _Configure the truststore of the server to include the signer certificates of the OpenID Connect Providers that are supported_ using the [Adding trusted certificates in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_add_trust_cert.html) topic in IBMDOCS, the signer certificate that you want is for the following endpoint:
+      - https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+      - Where **{tenant}** is the name of your tenant.
 
-  - The <b>Redirect URI</b> is <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>, where:
+  - The <b>Redirect URI</b> that you will use for the RP when configuring Azure is <b><i>https://(hostname):(port)/(contextRoot)/(identifier)</i></b>, where:
     - (hostname):(port): 
-    - The hostname and SSL port of the WebSphere or Liberty server.
+      - The hostname and SSL port of the WebSphere or Liberty server.
     - (contextRoot):
-      - Liberty : replace the value with **oidcclient/redirect**
-      - WebSphere traditional: the default value is **oidcclient**
+      - Liberty : 
+        - Replace the value with **oidcclient/redirect**
+      - WebSphere traditional: 
+        - The default value is **oidcclient**
         - This is the context root of **WebsphereOIDCRP ear**
         - To find the value, in the Administrative console, navigate to **All Applications > WebsphereOIDCRP > Context Root for Web Modules**
           - If you installed the OIDC ear using [deployOidc.py](https://github.com/WASdev/sample.wsadmin.websphere-traditional) for use with the admin console, then you want to look for **WebsphereOIDCRP_Admin** instead of **WebsphereOIDCRP**
     - (identifier)
       - Liberty: the value for the **id** attribute of your **openidConnectClient** configuration.
       - WebSphere traditional: the value for the **provider_(id).identifier** OIDC TAI custom property.
-    - **Example**:  https://test.co:9443/oidcclient/RP1 -or- https://test.co:9443/oidcclient/redirect/RP1
+    - **Examples** :  
+      - Liberty: https://test.co:9443/oidcclient/redirect/RP1
+      - Websphere traditional: https://test.co:9443/oidcclient/RP1
+
+   
 
 
 ## Create an Azure AD user account
