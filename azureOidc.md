@@ -1,5 +1,4 @@
----
-title: Set up an app for OIDC on Azure
+# Seting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients
 ---
 
 # Description
@@ -86,11 +85,12 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
    - The **Redirect URI** field is optional on this page; instructions are provided later in this document for setting the Redirect URI
      - If you enter it now, be sure to select Web as the platform
 1. <font size="+1">Click <b>Register</b></font>
-   - Note the values that are generated for the **client ID** and **tenant ID** to use when configuring WebSphere or Liberty later in this task.
-     - All your client secrets use the same client ID.
-   - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
+   - Note values to use when when configuring WebSphere or Liberty later in this task.
+     - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
+       - where **{tenant}** is the name of your tenant.
+     - The generated for the **client ID** and **tenant ID** 
+       - All your client secrets use the same client ID.
    ![](files/AzNewApp.png?preventCache=1551478986083)
-
 1. <font size="+1">Create a client secret</font>
    1. <font size="+1">Next to <b>Client credentials</b>, click <b>Add a certificate or secret</b></font>
    1. <font size="+1">Click <b>New client secret</b></font>
