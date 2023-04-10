@@ -80,51 +80,45 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 1. Click the application that you want to use.
 
 ## Get the client ID and discovery URL values
--. Note values to use when when configuring WebSphere or Liberty later in this task.
-   - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
-     - where **{tenant}** is the name of your tenant.
-   - The values for for the **client ID** and **tenant ID** 
-     - All your client secrets use the same client ID.
+Note values to use when when configuring WebSphere or Liberty later in this task.
+  - The values for for the **client ID** and **tenant ID** 
+    - All your client secrets use the same client ID.
    ![](files/AzUpdateApp.png?preventCache=1551478986083)
+  - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
+    - where **{tenant}** is the name of your tenant.
 
 ## Create a client secret
-1. <font size="+1">Create a client secret</font>
+
 1. <font size="+1">Click the link next to <b>Client credentials</b></font>
 1. <font size="+1">Click <b>New client secret</b></font>
-
        ![](files/AzExistingSecret.png?preventCache=1551478986083)
-
 1. <font size="+1">Enter a description for your new secret and the expiration, then click <b>Add</b></font>
-
        ![](files/AzNewSecret.png?preventCache=1551478986083)
-
-1. <font size="+1">![](files/AzCaution.gif?preventCache=1551478986083) <b>Caution</b>: Be sure to note the value that is generated for the <font size="+2"><b>client secret</b></font> to use when configuring WebSphere or Liberty later in this task.  You cannot view this value again later.</font>
+1. <font size="+1">![](files/AzCaution.gif?preventCache=1551478986083) <b>Caution</b>: Be sure to note the value that is generated for the <font size="+2"><b>client secret</b></font> to use when configuring WebSphere or Liberty later in this task.  You might not see this value again later.</font>
 
    ![](files/AzWasSecret.png?preventCache=1551478986083)
 
 
 ## Add a redirect URI:
-1. <font size="+1">Under <b>Manage</b>, click <b>Authentication</b>
-
-  - If the **Web** platform already exists, click **Add URI**
-   ![](files/AzAddUri.png?preventCache=1551478986083)
-   - Enter your <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
-     - If you have your redirect URI, enter it now.                                   a
+<font size="+1">Under <b>Manage</b>, click <b>Authentication</b>
+- <font size="+1">If the **Web** platform already exists:</font>
+  1. Click **Add URI**
+    ![](files/AzAddUri.png?preventCache=1551478986083)
+  1. Enter your <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
+     - If you have your redirect URI, enter it now.  
      - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
-
-  - Otherwise, 
-   1. Click <b>Add a platform</b></font>
-      ![](files/AzAddPlatform.png?preventCache=1551478986083)
-   1. Click Web
-   1. <font size="+1">Fill in the information on the <b>Configure Web</b> panel:</font>
-      ![](files/AzAddRedirect.png?preventCache=1551478986083)
-      1. <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
-         - If you have your redirect URI, enter it now.                                   a
-   	  - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
-      1. <b>Implicit grant and hybrid flows</b>:
-         - Check both **Access tokens** and **ID tokens**
-
-   1. <font size="+1">Click <b>Configure</b></font>
+- <font size="+1">Otherwise:</font> 
+  1. Click <b>Add a platform</b>
+     ![](files/AzAddPlatform.png?preventCache=1551478986083)
+  1. Click Web
+  1. <font size="+1">Fill in the information on the <b>Configure Web</b> panel:</font>
+     ![](files/AzAddRedirect.png?preventCache=1551478986083)
+     1. <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
+        - If you have your redirect URI, enter it now.                                   a
+        - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
+     1. <b>Implicit grant and hybrid flows</b>:
+        - Check both **Access tokens** and **ID tokens**
+  1. <font size="+1">Click <b>Configure</b></font>
 
 
 # What to do next
