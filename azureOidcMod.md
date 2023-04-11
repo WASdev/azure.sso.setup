@@ -81,7 +81,7 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 
 ## Get the client ID and discovery URL values
 Note values to use when when configuring WebSphere or Liberty later in this task.
-  - The values for for the **client ID** and **tenant ID** 
+  - The values for the **client ID** and **tenant ID** 
     - All your client secrets use the same client ID.
    ![](files/AzUpdateApp.png?preventCache=1551478986083)
   - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
@@ -101,20 +101,20 @@ Note values to use when when configuring WebSphere or Liberty later in this task
 
 ## Add a redirect URI:
 <font size="+1">Under <b>Manage</b>, click <b>Authentication</b>
-- <font size="+1">If the **Web** platform already exists:</font>
+- <font size="+1">![](files/AzRedArrow.gif?preventCache=1551478986083) If the **Web** platform already exists:</font>
   1. Click **Add URI**
     ![](files/AzAddUri.png?preventCache=1551478986083)
   1. Enter your <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
      - If you have your redirect URI, enter it now.  
      - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
-- <font size="+1">Otherwise:</font> 
+- <font size="+1">![](files/AzRedArrow.gif?preventCache=1551478986083) Otherwise, if the Web platform does not exist:</font> 
   1. Click <b>Add a platform</b>
      ![](files/AzAddPlatform.png?preventCache=1551478986083)
-  1. Click Web
+  1. Click **Web**
   1. <font size="+1">Fill in the information on the <b>Configure Web</b> panel:</font>
      ![](files/AzAddRedirect.png?preventCache=1551478986083)
      1. <b>Redirect URI</b>: <i>https://(hostname):(port)/(contextRoot)/(identifier)</i>
-        - If you have your redirect URI, enter it now.                                   a
+        - If you have your redirect URI, enter it now. 
         - Otherwise, see the **Before you begin** section for how to determine your redirect URI.
      1. <b>Implicit grant and hybrid flows</b>:
         - Check both **Access tokens** and **ID tokens**
