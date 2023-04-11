@@ -1,5 +1,5 @@
 # azure.sso.setup
-Set up Azure SSO as an identity provider for WebSphere Application Server and Liberty clients
+Set up Azure as an SSO identity provider for WebSphere Application Server and Liberty clients
 
 ## Azure SSO setup examples 
 - [Setting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients](azureOidc.md)
