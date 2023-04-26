@@ -3,7 +3,7 @@
 
 # Description
 
-This document is indended as a fast path to get you started with using Azure as your OpenID Connect provider (OP) for the WebSphere Application Server traditional and Liberty OIDC relying parties (RP).  
+This document is indended as a fast path to get you started with using Microsoft:registered: Azure:tm: as your OpenID Connect provider (OP) for the WebSphere:tm: Application Server traditional and Liberty OIDC relying parties (RP).  
 
 # References
 
