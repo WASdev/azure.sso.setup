@@ -3,7 +3,7 @@
 
 # Description
 
-This example shows how to modify an existing Azure app registration to add a WebSphere traditional or Liberty OIDC relying parties (RP).
+This example shows how to modify an existing Microsoft :registered: Azure:tm: app registration to add a WebSphere:tm: traditional or Liberty OIDC relying parties (RP).
 
 # References
 
