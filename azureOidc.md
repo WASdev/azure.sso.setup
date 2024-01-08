@@ -3,7 +3,7 @@
 
 # Description
 
-This document is indended as a fast path to get you started with using Microsoft :registered: Azure:tm: as your OpenID Connect provider (OP) for the WebSphere:tm: Application Server traditional and Liberty OIDC relying parties (RP).  
+This document is indended as a fast path to get you started with using [Microsoft :registered: Entra:tm: ID (formerly Azure:tm: AD)](https://azure.microsoft.com/services/active-directory/) as your OpenID Connect provider (OP) for the WebSphere:tm: Application Server traditional and Liberty OIDC relying parties (RP).  
 
 # References
 
@@ -13,6 +13,8 @@ Here are some links from Microsoft that contain more detailed configuration info
 - [Quickstart: Configure an application to expose a web API](https://learn.microsoft.com/en-gb/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)
 - [Quickstart: Configure a client application to access a web API](https://learn.microsoft.com/en-gb/azure/active-directory/develop/quickstart-configure-app-access-web-apis)
 
+Here is a link to an Entra ID setup that might be is less detailed, but includes using either Power Pages and Azure:
+- [Set up an OpenID Connect provider with Microsoft Entra ID](https://learn.microsoft.com/en-us/power-pages/security/authentication/openid-settings)
 
 # Background
 
@@ -62,28 +64,34 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 
 # Procedure
 
-## Login to the Azure portal
+## Login to your identity provider portal
 
-1. <font size="+1">Login to the  <a href="https://portal.azure.com">Azure portal</a>  at <a href="https://portal.azure.com">https://portal.azure.com</a>.</font>
+<font size="+1">Do one of the following:</font>
+- <font size="+1">Login to the <b><font size="+2">Entra console</font></b></font>
+  1. <font size="+1">Login to the <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">Entra console</a> at <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView</a></font>.
+  2. <font size="+1">If you have access to multiple tenants, perform the following actions to choose the tenant in which you want to register the application:</font>
+     1. <font size="+1">Click the settings icon&nbsp;&nbsp;![](files/gear.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu to access the <b>Directories + subscriptions filter</b> menu.</font>
+     1. <font size="+1">Switch to the tenant in which you want to register the application.</font>
+     1. <font size="+1">After you select your tenant, click&nbsp;&nbsp;![](files/Entra.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu on the left to return to the **Entra admin center** menu.</font>
+     2. <font size="+1">Under <b>Identity</b> in the menu on the left, click <b>Applications</b>, then <b>App registrations</b></font>
 
+- <font size="+1">Login to the <b><font size="+2">Azure portal</font></b></font>
+  1. <font size="+1">Login to the <a href="https://portal.azure.com">Azure portal</a> at <a href="https://portal.azure.com">https://portal.azure.com</a></font>.
+  2. <font size="+1">If you have access to multiple tenants, perform the following actions to choose the tenant in which you want to register the application:</font>
+     1. <font size="+1">Click the settings icon&nbsp;&nbsp;![](files/gear.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu to access the <b>Directories + subscriptions filter</b> menu.</font>
+     2. <font size="+1">Switch to the tenant in which you want to register the application.</font>
+     3. <font size="+1">After you select your tenant, click&nbsp;&nbsp;![](files/AzButton.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu on the left to return to the **Azure services** menu.</font>
+     1. <font size="+1">In the search box in the menu bar at the top, search for <b>Azure Active Directory</b> then click <b>Microsoft Entra ID</b></font>
 
-1. <font size="+1">If you have access to multiple tenants, perform the following actions to choose the tenant in which you want to register the application:</font>
-   - Click&nbsp;&nbsp;![](files/AzFilter.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu to access the <b>Directories + subscriptions filter</b> menu.
-   - Switch to the tenant in which you want to register the application.
-   - After you select your tenant, click&nbsp;&nbsp;![](files/AzButton.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu on the left to return to the **Azure services** menu.
+     	![](files/EntraID.png?preventCache=1551478986083)
+
+     1. <font size="+1">Under <b>Manage</b> in the menu on the left, click <b>App Regsistrations</b></font>
+
+        ![](files/AzAppRegistrations.png?preventCache=1551478986083)
+     	
 
 
 ## Register your application
-
-   ![](files/AzSearch.png?preventCache=1551478986083)
-
-1. <font size="+1">In the search box in the menu bar at the top, search for <b>Azure Active Directory</b> then click <b>Azure Active Directory</b></font>
-
-	![](files/AzADChoose.png?preventCache=1551478986083)
-
-1. <font size="+1">Under <b>Manage</b> in the menu on the left, click <b>App Regsistrations</b></font>
-
-	![](files/AzAppRegistrations.png?preventCache=1551478986083)
 
 1. <font size="+1">In the action bar, click <b>New registration</b></font>
 
@@ -100,6 +108,7 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
    - Note values to use when when configuring WebSphere or Liberty later in this task.
      - Your discovery URL is **https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration**
        - where **{tenant}** is the name of your tenant.
+       - you can see this URL if you click the **Endpoints** link at the top of the **App registrations page.  It is in the the **OpenID Connect metadata document** field.
      - The generated for the **client ID** and **tenant ID** 
        - All your client secrets use the same client ID.
    ![](files/AzNewApp.png?preventCache=1551478986083)
