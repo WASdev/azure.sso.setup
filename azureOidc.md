@@ -13,7 +13,7 @@ Here are some links from Microsoft that contain more detailed configuration info
 - [Quickstart: Configure an application to expose a web API](https://learn.microsoft.com/en-gb/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)
 - [Quickstart: Configure a client application to access a web API](https://learn.microsoft.com/en-gb/azure/active-directory/develop/quickstart-configure-app-access-web-apis)
 
-Here is a link to an Entra ID setup that might be is less detailed, but includes using either Power Pages and Azure:
+Here is a link to an Entra ID setup that might be is less detailed, but includes using either Power Pages or Azure:
 - [Set up an OpenID Connect provider with Microsoft Entra ID](https://learn.microsoft.com/en-us/power-pages/security/authentication/openid-settings)
 
 # Background
