@@ -1,7 +1,7 @@
 # azure.sso.setup
 Set up Microsoft :registered: Entra:tm: ID or Azure:tm: AD as an SSO identity provider for WebSphere:tm: Application Server and Liberty clients
 
-## Entra ID setup examples 
+## Entra ID SSO setup examples 
 - [Setting up Microsoft Entra ID as an OIDC OP for WebSphere Application Server and Liberty clients](entraOidc.md)
   - The steps in [Setting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients](https://github.com/WASdev/azure.sso.setup/blob/main/azureOidc.md) on this site have been modified to account for using the Azure portal or Entra ID admin center.  For steps to set up Entra ID as an OIDC OP, see [Setting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients](https://github.com/WASdev/azure.sso.setup/blob/main/azureOidc.md).
 
