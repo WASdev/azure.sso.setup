@@ -67,8 +67,8 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 ## Login to your identity provider portal
 
 <font size="+1">Do one of the following:</font>
-- <font size="+1">Login to the <b><font size="+2">Entra console</font></b></font>
-  1. <font size="+1">Login to the <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">Entra console</a> at <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView</a></font>.
+- <font size="+1">Login to the <b><font size="+2">Entra admin center</font></b></font>
+  1. <font size="+1">Login to the <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">Entra admin center</a> at <a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView">https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView</a></font>.
   2. <font size="+1">If you have access to multiple tenants, perform the following actions to choose the tenant in which you want to register the application:</font>
      1. <font size="+1">Click the settings icon&nbsp;&nbsp;![](files/gear.png?preventCache=1551478986083)&nbsp;&nbsp;in the top menu to access the <b>Directories + subscriptions filter</b> menu.</font>
      1. <font size="+1">Switch to the tenant in which you want to register the application.</font>
