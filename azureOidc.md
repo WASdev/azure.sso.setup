@@ -1,9 +1,9 @@
-# Setting up Azure as an OIDC OP for WebSphere Application Server and Liberty clients
+# Set up Azure or Entra OIDC for WebSphere and Liberty clients
 ---
 
 # Description
 
-This document is indended as a fast path to get you started with using [Microsoft :registered: Entra:tm: ID (formerly Azure:tm: AD)](https://azure.microsoft.com/services/active-directory/) as your OpenID Connect provider (OP) for the WebSphere:tm: Application Server traditional and Liberty OIDC relying parties (RP).  
+Setting up Microsoft :registered: Azure:tm: AD and Entra:tm: ID as an OIDC OP for WebSphere:tm: and Liberty clients.  This document is indended as a fast path to get you started with using [Microsoft Entra ID (formerly Azure AD)](https://azure.microsoft.com/services/active-directory/) as your OpenID Connect provider (OP) for the WebSphere Application Server traditional and Liberty OIDC relying parties (RP).  
 
 You can use the [Azure portal](https://portal.azure.com/) or the [Entra ID admin center](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/EntraNav.ReactView) for this procedure.
 
