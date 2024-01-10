@@ -1,9 +1,9 @@
-# Modifying an Azure OIDC OP for WebSphere Application Server and Liberty clients
+# Modify Azure OIDC for WebSphere and Liberty clients
 ---
 
 # Description
 
-This example shows how to modify an existing Microsoft :registered: Azure:tm: app registration to add a WebSphere:tm: traditional or Liberty OIDC relying parties (RP).
+Modifying a Microsoft Azure OIDC OP for WebSphere Application Server and Liberty clients.  This example shows how to modify an existing Microsoft :registered: Azure:tm: app registration to add a WebSphere:tm: traditional or Liberty OIDC relying parties (RP).  The steps are similar for the Entra:tm: ID console.
 
 # References
 
