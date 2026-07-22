@@ -28,12 +28,12 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 
 ## Configure your OIDC RP: 
 
-  - For WebSphere Application Server Traditional, see [Configuring an OpenID Connect Relying Party](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/tsec_oidconfigure.html) and [OpenID Connect Relying Party custom properties](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/csec_oidprop.html).
+  - For WebSphere Application Server Traditional, see [Configuring an OpenID Connect Relying Party](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/was/ae/tsec_oidconfigure.html) and [OpenID Connect Relying Party custom properties](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/was/ae/csec_oidprop.html).
     - On the _Import the OpenID connect provider's SSL signer certificate to the WebSphere Application Server truststore_ step, use the following data:
       - host: **login.microsoftonline.com**
       - port: **443**
-  - For Liberty, see [Configuring an OpenID Connect Client in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_config_oidc_rp.html)
-    - On the step to _Configure the truststore of the server to include the signer certificates of the OpenID Connect Providers that are supported_ using the [Adding trusted certificates in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_add_trust_cert.html) topic in IBMDOCS, the signer certificate that you want is for the following endpoint:
+  - For Liberty, see [Configuring an OpenID Connect Client in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/wlp/ae/twlp_config_oidc_rp.html)
+    - On the step to _Configure the truststore of the server to include the signer certificates of the OpenID Connect Providers that are supported_ using the [Adding trusted certificates in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/wlp/ae/twlp_add_trust_cert.html) topic in IBMDOCS, the signer certificate that you want is for the following endpoint:
       - https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
       - Where **{tenant}** is the name of your tenant.
 
@@ -192,12 +192,12 @@ If the RP (WebSphere traditional or Liberty) and Azure administration roles are 
 
 1. <font size="+1">Use the <b>client ID</b>, <b>client secret</b>, and <b>discovery URL</b> to complete your OIDC configuration on WebSphere or Liberty</font>
 
-   - For WebSphere Application Server Traditional, see [OpenID Connect Relying Party custom properties](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/csec_oidprop.html).
-   - For Liberty, see [Configuring an OpenID Connect Client in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_config_oidc_rp.html).
+   - For WebSphere Application Server Traditional, see [OpenID Connect Relying Party custom properties](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/was/ae/csec_oidprop.html).
+   - For Liberty, see [Configuring an OpenID Connect Client in Liberty](https://www.ibm.com/docs/en/was-liberty/base?topic=SSEQTP_liberty/wlp/ae/twlp_config_oidc_rp.html).
 
 
 1. <font size="+1">(<b>Optional</b>): If your RP is WebSphere traditional:</font>
-   - See the [Configuring the OIDC TAI to perform RP-Initiated Logout](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/oidc_rp_initiated.html) task in IBMDOCs to determine if you want to use RP-Initiated logout.
+   - See the [Configuring the OIDC TAI to perform RP-Initiated Logout](https://www.ibm.com/docs/en/was-nd/9.0.5?topic=SSAW57_9.0.5/was/ae/oidc_rp_initiated.html) task in IBMDOCs to determine if you want to use RP-Initiated logout.
    - If you want to perform RP-Initiated logout, perform the configuration on WebSphere, then use the <b>provider_(id).endSessionRedirectUrl</b> to complete configuration in Azure:
 
 
